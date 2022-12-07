@@ -1,25 +1,43 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:get/get.dart';
+import 'package:mlindemtoto/screens/splash.dart';
+import 'Controllers/auth_controller.dart';
+import 'Controllers/mainbinding.dart';
+import 'firebase_options.dart';
  
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,);
+
+  runApp(const MyApp());
+}
  
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
  
-  static const String _title = 'Sample App';
+ // static const String _title = 'Mlinde Mtoto';
  
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: _title,
-      home: Scaffold(
-        appBar: AppBar(title: const Text(_title)),
-        body: const MyStatefulWidget(),
+    return GetMaterialApp(
+      initialBinding: MainBinding(),
+      debugShowCheckedModeBanner: false,
+       navigatorObservers: [FlutterSmartDialog.observer],
+      builder: FlutterSmartDialog.init(),
+      title: "MlindeMtoto",
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
       ),
+      home: const SplashScreen(),
+      
     );
   }
 }
  
-class MyStatefulWidget extends StatefulWidget {
+/*class MyStatefulWidget extends StatefulWidget {
   const MyStatefulWidget({Key? key}) : super(key: key);
  
   @override
@@ -40,7 +58,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(10),
                 child: const Text(
-                  'TutorialKart',
+                  'MlindeMtoto',
                   style: TextStyle(
                       color: Colors.blue,
                       fontWeight: FontWeight.w500,
@@ -109,4 +127,4 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ],
         ));
   }
-}
+}*/

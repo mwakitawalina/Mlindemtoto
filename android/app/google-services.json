@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "317047781494",
+    "project_id": "mlindemtoto-fbc64",
+    "storage_bucket": "mlindemtoto-fbc64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317047781494:android:95e5863c44687c016d4757",
+        "android_client_info": {
+          "package_name": "com.example.mlindemtoto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317047781494-q98qraqelq2g37mqn7l0v7rpdd6b9uku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADYsR_Y0rwn23dD8fB3H8kbYmxO3n_TXY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317047781494-q98qraqelq2g37mqn7l0v7rpdd6b9uku.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
