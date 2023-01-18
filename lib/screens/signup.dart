@@ -62,7 +62,7 @@ class _SignUpState extends State<SignUp> {
             TextField(
               decoration: const InputDecoration(hintText: "Repeat Password"),
               controller: _repeatPasswordController,
-              obscureText: true,
+             obscureText: true,
             ),
             const SizedBox(height: 30),
             ElevatedButton(
@@ -75,7 +75,12 @@ class _SignUpState extends State<SignUp> {
                     _fullNameController.text.trim().isEmpty ||
                     _emailController.text.trim().isEmpty) {
                   Utils.showError("No field should be empty!");
-                } else {
+                }
+                else if(_passwordController.text.trim()!= _repeatPasswordController.text.trim()){
+                  Utils.showError("Password mismatch");
+                }
+                  
+                 else {
                    
                   AuthController.to.register(
                       _fullNameController.text.trim(),
