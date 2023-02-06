@@ -50,20 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDtdJmsItKNTQXeG6Yew6JPnvQ-k9INE0Y',
-    appId: '1:317047781494:web:888bb5607df714096d4757',
-    messagingSenderId: '317047781494',
-    projectId: 'mlindemtoto-fbc64',
-    authDomain: 'mlindemtoto-fbc64.firebaseapp.com',
-    storageBucket: 'mlindemtoto-fbc64.appspot.com',
-    measurementId: 'G-TP6FLZLDE9',
+    apiKey: 'AIzaSyBD0ywYQBDoUvIoieew2juBOyVZYgfI6tg',
+    appId: '1:708442515327:web:b4e6c6665ef36686d59c4a',
+    messagingSenderId: '708442515327',
+    projectId: 'mlinde-25070',
+    authDomain: 'mlinde-25070.firebaseapp.com',
+    storageBucket: 'mlinde-25070.appspot.com',
+    measurementId: 'G-CFCRPSM8JB',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyADYsR_Y0rwn23dD8fB3H8kbYmxO3n_TXY',
-    appId: '1:317047781494:android:95e5863c44687c016d4757',
-    messagingSenderId: '317047781494',
-    projectId: 'mlindemtoto-fbc64',
-    storageBucket: 'mlindemtoto-fbc64.appspot.com',
+    apiKey: 'AIzaSyDoRSy16dYRc0NGwJj2bfC04iLGi4wTsCU',
+    appId: '1:708442515327:android:14c50a5e25f2bd14d59c4a',
+    messagingSenderId: '708442515327',
+    projectId: 'mlinde-25070',
+    storageBucket: 'mlinde-25070.appspot.com',
   );
 }
