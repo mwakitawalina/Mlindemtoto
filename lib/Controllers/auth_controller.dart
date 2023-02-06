@@ -1,6 +1,5 @@
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import '../Utils/utils.dart';
 import '../widgetss/login.dart';
