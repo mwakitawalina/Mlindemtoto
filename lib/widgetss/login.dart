@@ -8,6 +8,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 
 import '../Controllers/auth_controller.dart';
+import '../Controllers/authcontroller_alt.dart';
 import '../Utils/appconstants.dart';
 import '../Utils/utils.dart';
 import '../screens/dashboard.dart';
@@ -210,7 +211,7 @@ Future<void> _sendPasswordReset(FormBuilderState? currentState) async {
   }
 
   var email = currentState.value["email"];
-  await AuthController.to.sendPasswordResetEmail(email);
+  //await AuthController.to.sendPasswordResetEmail(email);
 
   SmartDialog.dismiss();
 

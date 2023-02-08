@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:mlindemtoto/screens/splash.dart';
-import 'Controllers/auth_controller.dart';
+import 'Controllers/authcontroller_alt.dart';
 import 'Controllers/mainbinding.dart';
 import 'firebase_options.dart';
  

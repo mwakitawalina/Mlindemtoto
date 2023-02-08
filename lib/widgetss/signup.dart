@@ -9,6 +9,7 @@ import 'package:mlindemtoto/widgetss/signup.dart';
 
 
 import '../Controllers/auth_controller.dart';
+import '../Controllers/authcontroller_alt.dart';
 import '../Utils/appconstants.dart';
 import '../screens/dashboard.dart';
 
@@ -139,7 +140,7 @@ class _SignupState extends State<Signup> {
       var fields = _formKey.currentState!.value;
       // print(fields.toString());
       Utils.showLoading();
-      var loggedIn = await AuthController.to.signup(fields["name"],
+      var loggedIn = await AuthController.to.register(fields["name"],
           fields["email"], fields["phone"], fields["town"], fields["password"]);
       SmartDialog.dismiss();
 

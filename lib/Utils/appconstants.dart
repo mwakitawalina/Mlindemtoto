@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AppConst{
   //App main colors
   static const Color mainColor = Color.fromRGBO(207, 95, 3, 1);
-  static const Color mainColorLight = Color.fromRGBO(10,181,158, 1);
+  static const Color mainColorLight = Color.fromRGBO(181, 127, 10, 1);
   static const Color secColor = Color.fromRGBO(221, 128, 22, 1);
   static const Color secColorLight = Color.fromRGBO(247,230,176, 1);
   static const Color accentColor = Color.fromRGBO(51,65,72, 1);

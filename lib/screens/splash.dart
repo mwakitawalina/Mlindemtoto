@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../Controllers/auth_controller.dart';
+import '../Controllers/authcontroller_alt.dart';
 import '../widgetss/login.dart';
 import 'dashboard.dart';
 //import 'package:jihusishe/frontend/screens/dashboard.dart';
@@ -21,9 +22,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        const Duration(seconds: 15),
+        const Duration(seconds: 3),
         ()  {
-          if(AuthController.to.parseUser.value!=null){
+          if(AuthController.to.firebaseUser.value!=null){
             Get.offAll(()=>const Dashboard());
           }else{
             Get.offAll(()=>const Login());

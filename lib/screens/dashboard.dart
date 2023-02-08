@@ -33,7 +33,7 @@ class Dashboard extends StatelessWidget {
             height: Get.height,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage("img/design.jpg"),
+                    image: AssetImage("img/background.png"),
                     fit: BoxFit.cover)),
           ),
           Container(

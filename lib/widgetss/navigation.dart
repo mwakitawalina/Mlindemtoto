@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mlindemtoto/Controllers/auth_controller.dart';
 
-import '../Controllers/auth_controller.dart';
+import '../Controllers/authcontroller_alt.dart';
 import '../Utils/appconstants.dart';
 import '../screens/dashboard.dart';
 import '../screens/resources.dart';
@@ -26,7 +27,7 @@ class AppDrawerWidget {
                 ),
                 const SizedBox(height: 20,),
                 Text(
-                  "${AuthController.to.parseUser.value?.get("name")}",
+                  "${AuthController.to.firebaseUser.value==null?"":AuthController.to.firebaseUser.value?.displayName}",
 
                   style:
                   const TextStyle(fontWeight: FontWeight.bold, color: Colors.white,fontSize: 18),
@@ -35,7 +36,7 @@ class AppDrawerWidget {
                   height: 5,
                 ),
                 Text(
-                  "${AuthController.to.parseUser.value?.emailAddress}",
+                  "${AuthController.to.firebaseUser.value==null?"":AuthController.to.firebaseUser.value?.email}",
                   style: TextStyle(color: Colors.white70),
                 )
               ],
