@@ -131,7 +131,7 @@ class Dashboard extends StatelessWidget {
                               title: "Schedule",
                               subtitle: "Schedule your next visit",
                               onClick: () {
-                                Get.to(() => Schedule());
+                                Get.to(() => DynamicEvent());
                               }),
                           Dashcard(
                             img: "img/resources.jpg",

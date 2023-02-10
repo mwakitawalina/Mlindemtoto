@@ -53,8 +53,7 @@ class AuthController extends GetxController {
       String fullName, String email, String phone, String town, String password) async {
     Utils.showLoading(message: "Creating account…");
     try {
-      await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+     await (auth as FirebaseAuth).signInWithEmailAndPassword(email: email, password: password);
       var user = auth.currentUser;
       if (user != null) {
         await (user as User).updateDisplayName(fullName);
@@ -76,6 +75,7 @@ class AuthController extends GetxController {
         return false;
       }
     } catch (firebaseAuthException) {
+      print((firebaseAuthException as FirebaseAuthException).message);
       Utils.showError("Signup Failed!");
       Utils.dismissLoader();
       return false;
@@ -91,7 +91,8 @@ class AuthController extends GetxController {
 
       if (user != null) {
         Utils.showSuccess("Login Successful!");
-        //Utils.dismissLoader();
+        Utils.dismissLoader();
+        return true;
       }
     } catch (firebaseAuthException) {
       Utils.showError("Login  Failed!");
