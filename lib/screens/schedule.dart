@@ -6,10 +6,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 
-class DynamicEvent extends StatefulWidget {
-  @override
-  _DynamicEventState createState() => _DynamicEventState();
-}
+
 
 class _DynamicEventState extends State<DynamicEvent> {
  // calendarController _controller;
@@ -97,7 +94,7 @@ class _DynamicEventState extends State<DynamicEvent> {
     onPageChanged: (focusedDay) {
       // No need to call `setState()` here
       _focusedDay = focusedDay;
-    },
+    }, firstDay: DateTime.now(), focusedDay: DateTime(2025), lastDay: DateTime(2026),
                       )])
                       ,
               headerStyle: HeaderStyle(
