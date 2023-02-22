@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mlindemtoto/Utils/appconstants.dart';
 import 'package:mlindemtoto/screens/devices.dart';
 import 'package:mlindemtoto/screens/realtime.dart';
 import 'package:mlindemtoto/screens/resources.dart';
@@ -7,7 +8,6 @@ import 'package:mlindemtoto/screens/schedule.dart';
 
 import '../widgetss/dashcard.dart';
 import '../widgetss/navigation.dart';
-
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -31,10 +31,8 @@ class Dashboard extends StatelessWidget {
           Container(
             width: Get.width,
             height: Get.height,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("img/background.png"),
-                    fit: BoxFit.cover)),
+            color: AppConst.mainColor,
+          
           ),
           Container(
             width: Get.width,
@@ -56,7 +54,6 @@ class Dashboard extends StatelessWidget {
                     SizedBox(
                       width: 20,
                     ),
-  
                     SizedBox(
                       width: 20,
                     ),
@@ -113,51 +110,66 @@ class Dashboard extends StatelessWidget {
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(35),
                           topRight: Radius.circular(35))),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // SizedBox(height: 10),
-                      Text(
-                        "Actions",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
-                      SizedBox(height: 20),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Dashcard(
-                              img: "img/calendar.jpg",
-                              title: "Schedule",
-                              subtitle: "Schedule your next visit",
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // SizedBox(height: 10),
+                        Text(
+                          "Actions",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16),
+                        ),
+                        SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Dashcard(
+                                
+                                title: "Schedule",
+                                img: "images/calendar.jpg",
+                                subtitle: "Schedule your next visit",
+                                onClick: () {
+                                  Get.to(() => DynamicEvent());
+                                }),
+                            Dashcard(
+                              img: "images/resources.jpg",
+                              title: "Civic education" , 
+                              subtitle: "Civic education resources",
+                              
                               onClick: () {
-                                Get.to(() => DynamicEvent());
-                              }),
-                          Dashcard(
-                            img: "img/resources.jpg",
-                            title: "Civic education",
-                            subtitle: "Civic education resources",
-                            onClick: () {
-                              Get.to(() => Resources());
-                            },
-                          ),
+                                Get.to(() => Resources());
+                              },
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 30,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
                             Dashcard(
-                            img: "img/smartwatch.png",
-                            title: "Devices",
-                            subtitle: "Connect your devices",
-                            onClick: () {
-                              Get.to(() => Devices());
-                            }),
+                                img: "images/smartwatch.png",
+                                
+                                title: "Devices",
+                                subtitle: "Connect your devices",
+                                onClick: () {
+                                  Get.to(() => Devices());
+                                }),
                             Dashcard(
-                            img: "img/map.jpg",
-                            title: "Location",
-                            subtitle: "Locate your child",
-                            onClick: () {
-                              Get.to(() => realtime());
-                            }),
-                        ],
-                      )
-                    ],
+                                img: "images/map.jpg",
+                                title: "Location",
+                                subtitle: "Locate your child",
+                               
+                                
+                                onClick: () {
+                                  Get.to(() => realtime());
+                                  //lauchMaps();
+                                }
+                                ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ))
               ],

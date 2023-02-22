@@ -166,8 +166,8 @@ class _SignupState extends State<Signup> {
 
 
 // ignore_for_file: prefer_const_constructors
-
-/*import 'package:flutter/gestures.dart';
+/*
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../Controllers/auth_controller.dart';
@@ -189,9 +189,9 @@ class _SignUpState extends State<SignUp> {
 
   final TextEditingController _phoneController = TextEditingController();
 
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _townController = TextEditingController();
 
-  final TextEditingController _repeatPasswordController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -219,13 +219,13 @@ class _SignUpState extends State<SignUp> {
               controller: _phoneController,
             ),
             TextField(
-              decoration: const InputDecoration(hintText: "Password"),
-              controller: _passwordController,
-              obscureText: true,
+              decoration: const InputDecoration(hintText: "Town"),
+              controller: _townController,
+              obscureText: false,
             ),
             TextField(
-              decoration: const InputDecoration(hintText: "Repeat Password"),
-              controller: _repeatPasswordController,
+              decoration: const InputDecoration(hintText: "Password"),
+              controller: _passwordController,
              obscureText: true,
             ),
             const SizedBox(height: 30),
@@ -240,9 +240,9 @@ class _SignUpState extends State<SignUp> {
                     _emailController.text.trim().isEmpty) {
                   Utils.showError("No field should be empty!");
                 }
-                else if(_passwordController.text.trim()!= _repeatPasswordController.text.trim()){
-                  Utils.showError("Password mismatch");
-                }
+                //else if(_passwordController.text.trim()!= _repeatPasswordController.text.trim()){
+                 // Utils.showError("Password mismatch");
+                //}
                   
                  else {
                    
@@ -250,8 +250,8 @@ class _SignUpState extends State<SignUp> {
                       _fullNameController.text.trim(),
                       _emailController.text.trim(),
                       _phoneController.text.trim(),
-                      _passwordController.text.trim(),
-                      _repeatPasswordController.text.trim()
+                      _townController.text.trim(),
+                      _passwordController.text.trim()
                       );
                 }
               },

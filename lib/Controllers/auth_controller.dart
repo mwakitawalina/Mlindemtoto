@@ -34,7 +34,8 @@ class AuthController extends GetxController {
   }
 
   _setInitialScreen(User? user) async {
-    if (user == null) {
+ if( true){
+   if (user == null) {
       // if the user is not found then the user is navigated to the Register Screen
       Get.offAll(() => const Login());
     } else {
@@ -47,13 +48,14 @@ class AuthController extends GetxController {
       Get.offAll(() => Dashboard());
       Utils.dismissLoader();
     }
+ }
   }
 
   Future<bool> register(
       String fullName, String email, String phone, String town, String password) async {
     Utils.showLoading(message: "Creating account…");
     try {
-     await (auth as FirebaseAuth).signInWithEmailAndPassword(email: email, password: password);
+     await (auth as FirebaseAuth).createUserWithEmailAndPassword(email: email, password: password);
       var user = auth.currentUser;
       if (user != null) {
         await (user as User).updateDisplayName(fullName);
@@ -86,7 +88,7 @@ class AuthController extends GetxController {
     Utils.showLoading(message: "Authenticating…");
 
     try {
-      await auth.loginWithEmailAndPassword(email: email, password: password);
+      await (auth as FirebaseAuth).signInWithEmailAndPassword(email: email, password: password);
       var user = auth.currentUser;
 
       if (user != null) {
@@ -95,6 +97,8 @@ class AuthController extends GetxController {
         return true;
       }
     } catch (firebaseAuthException) {
+            print((firebaseAuthException as FirebaseAuthException).message);
+
       Utils.showError("Login  Failed!");
       Utils.dismissLoader();
       return false;

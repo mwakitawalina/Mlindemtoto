@@ -10,6 +10,11 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
+android {                                                                                     
+        defaultConfig {                                              
+    minSdkVersion 19                                  
+   }                                                                                           
+ }  
 
 allprojects {
     repositories {

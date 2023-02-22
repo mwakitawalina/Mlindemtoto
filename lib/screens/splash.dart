@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../Controllers/auth_controller.dart';
 import '../Controllers/authcontroller_alt.dart';
+import '../Utils/appconstants.dart';
 import '../widgetss/login.dart';
 import 'dashboard.dart';
 //import 'package:jihusishe/frontend/screens/dashboard.dart';
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        const Duration(seconds: 3),
+        const Duration(minutes: 2),
         ()  {
           if(AuthController.to.firebaseUser.value!=null){
             Get.offAll(()=>const Dashboard());
@@ -35,9 +36,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.orange,
+      backgroundColor: AppConst.mainColor ,
       body: Center(
-        child: Image.asset('images/children.png'),
+        child: Image.asset('images/bg.png'),
       ),
     );
   }
