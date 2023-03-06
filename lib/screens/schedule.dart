@@ -1,25 +1,102 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:googleapis/people/v1.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class CalendarButton extends StatelessWidget {
+  //final String calendarUrl;
+   final Url= 'https://calendar.google.com/calendar/u/0/r?tab=rc';
+
+  const CalendarButton({Key? key, }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        onPressed: () {
+          _launchUrl(context);
+        },
+        child: Text('Launch Calendar'),
+      ),
+    );
+  }
+
+  void _launchUrl(BuildContext context) async {
+    if (await canLaunchUrl(Url)) {
+      await launchUrl(Url);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not launch $Url')),
+      );
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import 'dart:convert';
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
+class DynamicEvent extends StatelessWidget {
+  const DynamicEvent({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}*/
 
+/*
+class DynamicEvent extends StatefulWidget {
+  @override
+  _DynamicEventState createState() => _DynamicEventState();
+}
 
 class _DynamicEventState extends State<DynamicEvent> {
- // calendarController _controller;
+  CalendarController _controller;
   late Map<DateTime, List<dynamic>> _events;
   late List<dynamic> _selectedEvents;
   late TextEditingController _eventController;
   late SharedPreferences prefs;
-  DateTime today= DateTime.now();
 
   @override
   void initState() {
     super.initState();
-    //_controller = calendarController();
+    _controller = CalendarController();
     _eventController = TextEditingController();
     _events = {};
     _selectedEvents = [];
@@ -56,49 +133,25 @@ class _DynamicEventState extends State<DynamicEvent> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.black,
-        title: Text('Plan your schedule'),
+        title: Text('Flutter Dynamic Event Calendar'),
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             TableCalendar(
-            
+              events: _events,
+              initialCalendarFormat: CalendarFormat.week,
               calendarStyle: CalendarStyle(
-              
-                  todayTextStyle: const TextStyle(
+                  canEventMarkersOverflow: true,
+                  todayColor: Colors.orange,
+                  selectedColor: Theme.of(context).primaryColor,
+                  todayStyle: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18.0,
-                      color: Colors.white),
-                      ),
-                      selectedDayPredicate: ((day) {
-                         return isSameDay(_selectedDay, day);
-                        }),
-                      onDaySelected: (selectedDay, focusedDay) {
-                      if (!isSameDay(_selectedDay, selectedDay)) {
-        // Call `setState()` when updating the selected day
-                       setState(() {
-                      _selectedDay = selectedDay;
-                       _focusedDay = focusedDay;
-                      });
-      }
-    },
-    onFormatChanged: (format) {
-      if (_calendarFormat != format) {
-        // Call `setState()` when updating calendar format
-        setState(() {
-          _calendarFormat = format;
-        });
-      }
-    },
-    onPageChanged: (focusedDay) {
-      // No need to call `setState()` here
-      _focusedDay = focusedDay;
-    }, firstDay: DateTime.now(), focusedDay: DateTime(2025), lastDay: DateTime(2026),
-                      )])
-                      ,
+                      color: Colors.white)),
               headerStyle: HeaderStyle(
-                //centerHeaderTitle: true,
+                centerHeaderTitle: true,
                 formatButtonDecoration: BoxDecoration(
                   color: Colors.orange,
                   borderRadius: BorderRadius.circular(20.0),
@@ -107,10 +160,13 @@ class _DynamicEventState extends State<DynamicEvent> {
                 formatButtonShowsNext: false,
               ),
               startingDayOfWeek: StartingDayOfWeek.monday,
-              onDaySelected: (date, events,holidays) {setState(() {_selectedEvents = events;  });
+              onDaySelected: (date, events,holidays) {
+                setState(() {
+                  _selectedEvents = events;
+                });
               },
               builders: CalendarBuilders(
-                selectedBuilder: (context, date, events) => Container(
+                selectedDayBuilder: (context, date, events) => Container(
                     margin: const EdgeInsets.all(4.0),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -131,8 +187,8 @@ class _DynamicEventState extends State<DynamicEvent> {
                       style: TextStyle(color: Colors.white),
                     )),
               ),
-              firstDay: DateTime.utc(2022,02,13), focusedDay: today, lastDay: DateTime.utc(2030,12,31), 
-            
+              calendarController: _controller, firstDay: DateTime.utc(2010, 10, 16), lastDay:  DateTime.utc(2030, 3, 14), focusedDay:  DateTime.now(),, 
+            ),
             ..._selectedEvents.map((event) => Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
@@ -150,12 +206,15 @@ class _DynamicEventState extends State<DynamicEvent> {
                 ),
               ),
             )),
-          
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
         child: Icon(Icons.add),
         onPressed: _showAddDialog,
-      )));
+      ),
+    );
   }
 
   _showAddDialog() async {
@@ -168,7 +227,7 @@ class _DynamicEventState extends State<DynamicEvent> {
             controller: _eventController,
           ),
           actions: <Widget>[
-            TextButton(
+            FlatButton(
               child: Text("Save",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),),
               onPressed: () {
                 if (_eventController.text.isEmpty) return;
@@ -191,4 +250,4 @@ class _DynamicEventState extends State<DynamicEvent> {
           ],
         ));
   }
-  }
+}*/
