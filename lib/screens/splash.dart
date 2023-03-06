@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../Controllers/auth_controller.dart';
-import '../Controllers/authcontroller_alt.dart';
+//import '../Controllers/authcontroller_alt.dart';
 import '../Utils/appconstants.dart';
 import '../widgetss/login.dart';
 import 'dashboard.dart';
-//import 'package:jihusishe/frontend/screens/dashboard.dart';
+
 
 
 
@@ -38,7 +38,8 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: AppConst.mainColor ,
       body: Center(
-        child: Image.asset('images/bg.png'),
+        child:Text("MlindeMtoto",style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white), )
+        //child: Image.asset('images/bg.png'),
       ),
     );
   }

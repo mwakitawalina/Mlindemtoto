@@ -22,7 +22,7 @@ class Pair extends StatelessWidget {
       
       body: Column(
         children: <Widget>[
-          Image(image: AssetImage("images/applewatch.jpg")),
+          Image(image: AssetImage("images/applewatch.png")),
           Padding(padding: EdgeInsets.all(20),
           child: Text("Huawei Bands will help connect you with your child for monitoring"),
           ),

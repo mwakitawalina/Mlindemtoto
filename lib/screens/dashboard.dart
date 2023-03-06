@@ -5,6 +5,7 @@ import 'package:mlindemtoto/screens/devices.dart';
 import 'package:mlindemtoto/screens/realtime.dart';
 import 'package:mlindemtoto/screens/resources.dart';
 import 'package:mlindemtoto/screens/schedule.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgetss/dashcard.dart';
 import '../widgetss/navigation.dart';
@@ -131,6 +132,8 @@ class Dashboard extends StatelessWidget {
                                 subtitle: "Schedule your next visit",
                                 onClick: () {
                                   Get.to(() => DynamicEvent());
+                                  
+                                  
                                 }),
                             Dashcard(
                               img: "images/resources.jpg",
@@ -156,16 +159,19 @@ class Dashboard extends StatelessWidget {
                                   Get.to(() => Devices());
                                 }),
                             Dashcard(
+                               
                                 img: "images/map.jpg",
                                 title: "Location",
                                 subtitle: "Locate your child",
-                               
-                                
-                                onClick: () {
-                                  Get.to(() => realtime());
-                                  //lauchMaps();
+                                onClick:(){
+                                   Get.to(() => Devices());
+
                                 }
+                              
+                                
+                                 
                                 ),
+                                
                           ],
                         )
                       ],
@@ -176,6 +182,7 @@ class Dashboard extends StatelessWidget {
             ),
           )
         ],
+        
       ),
     );
   }
