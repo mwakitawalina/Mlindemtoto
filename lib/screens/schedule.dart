@@ -1,33 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:googleapis/people/v1.dart';
+//import 'package:googleapis/people/v1.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class CalendarButton extends StatelessWidget {
+class DynamicEvent extends StatelessWidget {
   //final String calendarUrl;
-   final Url= 'https://calendar.google.com/calendar/u/0/r?tab=rc';
+  final Url = 'https://calendar.google.com/calendar/u/0/r?tab=rc';
 
-  const CalendarButton({Key? key, }) : super(key: key);
+  const DynamicEvent({Key? key, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
+      
       child: ElevatedButton(
-        onPressed: () {
-          _launchUrl(context);
+        onPressed: () async {
+          String url = "https://calendar.google.com/calendar/u/0/r?tab=rc";
+          var urllaunchable = await canLaunchUrl(
+              Uri.parse(url)); //canLaunch is from url_launcher package
+          if (urllaunchable) {
+            await launchUrl(Uri.parse(
+                url)); //launch is from url_launcher package to launch URL
+          }
         },
         child: Text('Launch Calendar'),
       ),
     );
-  }
-
-  void _launchUrl(BuildContext context) async {
-    if (await canLaunchUrl(Url)) {
-      await launchUrl(Url);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Could not launch $Url')),
-      );
-    }
   }
 }
 

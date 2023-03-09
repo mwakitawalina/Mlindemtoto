@@ -164,7 +164,7 @@ class Dashboard extends StatelessWidget {
                                 title: "Location",
                                 subtitle: "Locate your child",
                                 onClick:(){
-                                   Get.to(() => Devices());
+                                   Get.to(() => realtime());
 
                                 }
                               
