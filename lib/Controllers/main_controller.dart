@@ -5,6 +5,7 @@ import '../utils/utils.dart';
 import 'auth_controller.dart';
 
 class MainController extends GetxController{
+  static MainController get to => Get.find();
   var firestore;
   //creating a table(collection)
   var civicEducation = <String,dynamic>{}.obs;
@@ -26,7 +27,8 @@ createCivicEducation(title, content) async {
   var userId = AuthController.to.firebaseUser.value?.uid;
   try{
     await firestore.collection('CivicEducation').add({
-      "userId": userId, "title": title, "content": content,
+       "title": title, "content": content,
+      "created": DateTime.now().millisecondsSinceEpoch,
     });
     Utils.showSuccess("success");
     
@@ -40,7 +42,7 @@ updateCivicEducation(title, content) async {
   Utils.showLoading(message: "Updating Civic Education");
   var userId = AuthController.to.firebaseUser.value?.uid;
   try{
-    await firestore.collection('CivicEducation').set({
+    await firestore.collection('CivicEducation').doc(civicEducationSelectedId.value).update({
       "userId": userId, "title": title, "content": content,
     });
     Utils.showSuccess("success");

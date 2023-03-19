@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:mlindemtoto/Controllers/main_controller.dart';
 import 'package:mlindemtoto/screens/dashboard.dart';
 
 import '../Utils/utils.dart';
@@ -47,6 +48,7 @@ class AuthController extends GetxController {
       update();
       Get.offAll(() => Dashboard());
       Utils.dismissLoader();
+      MainController.to.civicEducation.bindStream(MainController.to.civicEducationStream());
     }
  }
   }
