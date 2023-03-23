@@ -3,17 +3,13 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:mlindemtoto/Utils/appconstants.dart';
+import 'package:mlindemtoto/screens/listdata.dart';
 import 'package:mlindemtoto/screens/pairingdevice.dart';
 
 class listdevices extends StatelessWidget {
    listdevices({Key? key, required this.device}) : super(key: key);
    final String device;
-  List listdevice = [
-    "Smart watch",
-    "Smart Band",
-    "Microchip",
-    "HeadPhone",
-  ];
+  
 
   @override
   Widget build(BuildContext context) {
