@@ -19,13 +19,13 @@ class realtime extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppConst.mainColorLight,
-        title: Text("Launching"),
+        title: Text("Connecting with Google Family"),
       ),
       
       body: Center(
         child: Column(
           children: <Widget>[
-            Image(image: AssetImage("images/safety.png")),
+            Image(image: AssetImage("images/family.png")),
             Padding(padding: EdgeInsets.all(20),
             
             child: Center(
